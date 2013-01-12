@@ -1,0 +1,53 @@
+Checklist MX
+ [  ] Configurar IP/Mascara/Gateway
+ [  ] Configurar DNS/hostname/dominio
+ [  ] Configurar hosts
+ [  ] Checar hostname --fqdn
+ [  ] Executar script Qmail Toaster
+ [  ] Desabilitar IMAP
+ [  ] Desabilitar IMAP-Seguro
+ [  ] Desabilitar POP
+ [  ] Desabilitar POP-Seguro
+ [  ] Configurar rcpt_limit
+ [  ] Desabilitar pagina default do apache
+ [  ] Configurar firewal
+ [  ] Trocar senha do root do MySQL
+ [  ] Trocar Senha do vpopmail do MySql
+ [  ] 
+
+Checklist SMTP
+ [  ] Configurar IP/Mascara/Gateway
+ [  ] Configurar DNS/hostname/dominio
+ [  ] Configurar hosts
+ [  ] Checar hostname --fqdn
+ [  ] Executar script Qmail Toaster
+ [  ] Desabilitar IMAP
+ [  ] Desabilitar IMAP-Seguro
+ [  ] Desabilitar POP
+ [  ] Desabilitar POP-Seguro
+ [  ] Configurar rcpt_limit (/etc/tcprules.d/tcp.smtp)
+ [  ] Desabilitar RBL[spamhaus] RBLSMTPD="" (/etc/tcprules.d/tcp.smtp)
+ [  ] Desabilitar pagina default do apache
+ [  ] Configurar firewal
+ [  ] Trocar senha do root do MySQL
+ [  ] Trocar Senha do vpopmail do MySql
+
+Checklist POP/IMAP
+ [  ] Configurar IP/Mascara/Gateway
+ [  ] Configurar DNS/hostname/dominio
+ [  ] Configurar hosts
+ [  ] Checar hostname --fqdn
+ [  ] Executar script Qmail Toaster
+ [  ] Habilitar IMAP
+ [  ] Habilitar IMAP-Seguro
+ [  ] Habilitar POP
+ [  ] Habilitar POP-Seguro
+ [  ] Configurar rcpt_limit (/etc/tcprules.d/tcp.smtp)
+ [  ] Desabilitar RBL[spamhaus] RBLSMTPD="" (/etc/tcprules.d/tcp.smtp)
+ [  ] Desabilitar Spamassassin
+ [  ] Desabilitar pagina default do apache
+ [  ] Configurar firewal
+ [  ] Trocar senha do root do MySQL
+ [  ] Trocar Senha do vpopmail do MySql
+ [  ] Configurar IP do smtp como host de acesso no MySql
+

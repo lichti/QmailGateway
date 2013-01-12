@@ -1,0 +1,67 @@
+#!/bin/bash
+
+#if [ -z "$1" ] || [ -z "$2" ]; then
+#       echo "Use: $0 domain.com.br morpheus.backsite.com.br"
+#fi
+
+TITULO="Apen Email Gateway"
+
+if [ $UID != 0 ]; then
+       if [ -f /usr/bin/dialog ]; then
+               dialog --title "$TITULO" --msgbox "Este script precisa ser executado como root"
+       else
+               echo "Este script precisa ser executado como root"
+       fi
+       exit 1
+fi
+
+if [ ! -f /usr/bin/dialog ]; then
+       yum install dialog -y
+fi
+
+add(){
+       DOMAIN=''
+       MX=''
+       while [ -z "$DOMAIN" ]; do
+               DOMAIN=$(dialog --stdout --title "$TITULO" --inputbox "Digite o dominio" 0 0)
+               if [ $? = 1 ]; then
+                       menu
+               fi
+       done
+
+       while [ -z "$MX" ]; do
+               MX=$(dialog --stdout --title "$TITULO" --inputbox "Digite o endereço do servidor de e-mail" 0 0)
+               if [ $? = 1 ]; then
+                       menu
+               fi
+       done
+
+       if [ -z "$(cat /var/qmail/control/rcpthosts | grep $DOMAIN)" ];then
+               echo "$DOMAIN" >> /var/qmail/control/rcpthosts
+       fi
+
+       if [ -z "$(cat /var/qmail/control/smtproutes | grep "$DOMAIN")" ];then
+               echo "$DOMAIN:$MX" >> /var/qmail/control/smtproutes
+       else
+               dialog --title "$TITULO" --msgbox 'Este dominio já esta configurado, use a opção editar' 6 40
+       fi
+
+       menu
+}
+
+menu(){
+       OP=$(dialog --stdout --title "$TITULO" \
+       --menu "Escolha a sua opção" 0 0 0  \
+       Adicionar "Adicionar novo dominio" \
+       Editar "Editar um dominio" \
+       Remover "Remover dominio" \
+       Sair "Fechar o script" )
+
+       case $OP in
+               "Adicionar") add;;
+               "Remover") echo rm;read;menu ;;
+               *) clear;exit 0 ;;
+       esac
+}
+
+menu
